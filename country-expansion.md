@@ -28,7 +28,7 @@ Step by step guide how to expand Shoogle with a new country, in this example for
 
 * `git init`
 
-* `git submodule sync`, then `git submodule update`
+* `git submodule add -b en https://github.com/lokal-ninja/ln-base.git themes/ln-base` <- new country language
 
 * `hugo server` to see if everything works (fix content/data if necessary). Clean up with `rm -rf resources/` afterwards
 
@@ -60,13 +60,17 @@ Step by step guide how to expand Shoogle with a new country, in this example for
 
 * Edit `netlify.toml` to adapt redirects for each region
 
-* `hugo server` to see if everything works
+* `hugo server` to see if everything works. Clean up with `rm -rf resources/` afterwards
 
 * `git checkout -b ca` <- new country code
 
 * `git add -A`
 
 * `git commit -m "branch ca"` <- new country code
+
+* Fix themes detached head: `cd themes/ln-base && git checkout en` <- new language code
+
+* In repo folder: `git commit -am "fix theme"`
 
 * `git push origin ca` <- new country code
 
@@ -90,7 +94,7 @@ Step by step guide how to expand Shoogle with a new country, in this example for
 
 * Edit `netlify.toml` with new redirect for new country
 
-* `hugo server` to see if everything works
+* `hugo server` to see if everything works. Clean up with `rm -rf resources/` afterwards
 
 * `git commit -am "enable ca"` <- new country code
 
